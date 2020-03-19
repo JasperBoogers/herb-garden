@@ -6,6 +6,8 @@ basically uses irrigation system bought in hardware store, no not much fun
 
 https://create.arduino.cc/projecthub/vinikon/autonomous-indoor-greenhouse-mature-real-working-project-946f6e?ref=search&ref_id=plant%20irrigation&offset=18
 
+https://vegetronix.com/TechInfo/
+
 
 ## to think about
 * moisture sensors may be volatile --> use kalmann filter?
