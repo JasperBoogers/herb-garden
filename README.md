@@ -8,6 +8,8 @@ https://create.arduino.cc/projecthub/vinikon/autonomous-indoor-greenhouse-mature
 
 https://vegetronix.com/TechInfo/
 
+https://www.youtube.com/watch?v=O_Q1WKCtWiA&t=325s
+has nice graphs
 
 ## to think about
 * moisture sensors may be volatile --> use kalmann filter?
