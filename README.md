@@ -21,21 +21,28 @@ has nice graphs
 * temperature (no irrigation when it is too hot?)
 
 ## Shopping list
-* [ ] [moisture sensors](https://www.tinytronics.nl/shop/nl/sensoren/temperatuur-lucht-vochtigheid/capacitieve-bodemvocht-sensor-module-met-kabel)
-* [ ] [stepper motor and bracket](https://www.tinytronics.nl/shop/nl/robotica/motoren/motor/stappenmotor-23mm-dik-0.13n.m-1.0a-nema17-jst-ph-connector)
-* [ ] LDR
-* [ ] guidance rails
+* [x] [moisture sensors](https://www.tinytronics.nl/shop/nl/sensoren/temperatuur-lucht-vochtigheid/capacitieve-bodemvocht-sensor-module-met-kabel)
+* [x] [stepper motor and bracket](https://www.tinytronics.nl/shop/nl/robotica/motoren/motor/stappenmotor-23mm-dik-0.13n.m-1.0a-nema17-jst-ph-connector)
+* [x] LDR
+* [x] guidance rails
+* [ ] water pump
+* [ ] water hoses
+* [ ] valves for left/right positioning
 
 ## Development history/plan
 In this section contains an overview of (future) versions. This includes possible fantasies.
 
 ### version 0.5
-
+test construction for watering system
 
 ### version 1.0
+first working version. Based on Arduino uno. Standalone, no wireless connection and/or control.
 
 ### version 2.0
+setup using ESP8266, could be controlled by raspi
 
 ### version 3.0
+imagination
 
 ### version 4.0
+rainbows
