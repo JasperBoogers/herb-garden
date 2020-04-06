@@ -19,21 +19,26 @@ float CurrentLocation;
 float MinLocation;
 float MaxLocation;
 
-/* define plant locations
- *  3 is furthest from watering head base station, 1 is nearest
- *  right is defined looking from base station along the guidance rail
- *  should locations be in percentages?
- */
-#define PlantLocation1 3
-#define PlantDirection1 "right"
-#define PlantLocation2 2
-#define PlantDirection2 "right"
-#define PlantLocation3 1
-#define PlantDirection3 "right"
-#define PlantLocation4 3
-#define PlantDirection4 "left"
-#define PlantLocation5 2
-#define PlantDirection5 "left"
+// define plants
+struct Plant1 {
+  int location = 3;
+  char dir[6] = "right";};
+
+struct Plant2 {
+  int location = 2;
+  char dir[6] = "right";};
+
+struct Plant3 {
+  int location = 1;
+  char dir[6] = "right";};
+
+struct Plant4 {
+  int location = 3;
+  char dir[6] = "left";};
+
+struct Plant5 {
+  int location = 2;
+  char dir[6] = "left";};
 
 void setup() {
   // put your setup code here, to run once:
@@ -47,7 +52,7 @@ void setup() {
   pinMode(StepPin, OUTPUT);
   pinMode(MotorBoundPinClose, INPUT);
   pinMode(MotorBoundPinFar, INPUT);
-  setup_motor();
+  MinLocation = setup_motor(MaxLocation);
 }
 
 void loop() {
@@ -56,13 +61,13 @@ void loop() {
 }
 
 
-void setup_motor() {
+float setup_motor(float Max) {
   // function to find bounds of rails
   // set MinLocation and MaxLocation
   
 }
 
-void move_motor(location){
+void move_motor(float location){
   // move motor to location
   // use CurrentLocation to determine direction of motion
 }
