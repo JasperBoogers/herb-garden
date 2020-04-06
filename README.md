@@ -11,6 +11,9 @@ https://vegetronix.com/TechInfo/
 https://www.youtube.com/watch?v=O_Q1WKCtWiA&t=325s
 has nice graphs
 
+stepper motor tutorial:
+https://www.makerguides.com/drv8825-stepper-motor-driver-arduino-tutorial/
+
 ## to think about
 * moisture sensors may be volatile --> use kalmann filter?
 
