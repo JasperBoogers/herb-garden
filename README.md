@@ -19,3 +19,23 @@ has nice graphs
 * pH
 * light (no irrigation during daylight?)
 * temperature (no irrigation when it is too hot?)
+
+## Shopping list
+* [ ] [moisture sensors](https://www.tinytronics.nl/shop/nl/sensoren/temperatuur-lucht-vochtigheid/capacitieve-bodemvocht-sensor-module-met-kabel)
+* [ ] [stepper motor and bracket](https://www.tinytronics.nl/shop/nl/robotica/motoren/motor/stappenmotor-23mm-dik-0.13n.m-1.0a-nema17-jst-ph-connector)
+* [ ] LDR
+* [ ] guidance rails
+
+## Development history/plan
+In this section contains an overview of (future) versions. This includes possible fantasies.
+
+### version 0.5
+
+
+### version 1.0
+
+### version 2.0
+
+### version 3.0
+
+### version 4.0
