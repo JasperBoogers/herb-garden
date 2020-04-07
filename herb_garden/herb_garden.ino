@@ -8,8 +8,8 @@
 #define MoisturePin4 4
 #define MoisturePin5 5
 #define LDRPin 6
-#define DirPin 7
-#define StepPin 8
+#define MotorDirPin 7
+#define MotorStepPin 8
 #define MotorBoundPinClose 9 // End stop module next to controller
 #define MotorBoundPinFar 10 // End stop module at far end of rail
 
@@ -22,30 +22,35 @@ float MaxLocation;
 
 // define plants
 struct Plant1 {
+  int number = 1;
   int location = 3;
   char dir[6] = "right";
   char species[15];
   };
 
 struct Plant2 {
+  int number = 2;
   int location = 2;
   char dir[6] = "right";
   char species[15];
   };
 
 struct Plant3 {
+  int number = 3;
   int location = 1;
   char dir[6] = "right";
   char species[15];
   };
 
 struct Plant4 {
+  int number = 4;
   int location = 3;
   char dir[6] = "left";
   char species[15];
   };
 
 struct Plant5 {
+  int number = 5;
   int location = 2;
   char dir[6] = "left";
   char species[15];
