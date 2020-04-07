@@ -1,5 +1,6 @@
 // import libraries
 
+
 // define pins
 #define MoisturePin1 1
 #define MoisturePin2 2
@@ -22,23 +23,33 @@ float MaxLocation;
 // define plants
 struct Plant1 {
   int location = 3;
-  char dir[6] = "right";};
+  char dir[6] = "right";
+  char species[15];
+  };
 
 struct Plant2 {
   int location = 2;
-  char dir[6] = "right";};
+  char dir[6] = "right";
+  char species[15];
+  };
 
 struct Plant3 {
   int location = 1;
-  char dir[6] = "right";};
+  char dir[6] = "right";
+  char species[15];
+  };
 
 struct Plant4 {
   int location = 3;
-  char dir[6] = "left";};
+  char dir[6] = "left";
+  char species[15];
+  };
 
 struct Plant5 {
   int location = 2;
-  char dir[6] = "left";};
+  char dir[6] = "left";
+  char species[15];
+  };
 
 void setup() {
   // put your setup code here, to run once:
@@ -64,7 +75,10 @@ void loop() {
 float setup_motor(float Max) {
   // function to find bounds of rails
   // set MinLocation and MaxLocation
-  
+
+//  Max = ;
+//  Min = ;
+//  return Min;
 }
 
 void move_motor(float location){
