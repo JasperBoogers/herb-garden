@@ -42,7 +42,8 @@ test construction for watering system
 first working version. Based on Arduino uno. Standalone, no wireless connection and/or control.
 
 ### version 2.0
-setup using ESP8266, could be controlled by raspi
+* setup using ESP8266, could be controlled by raspi
+* design custom PCB
 
 ### version 3.0
 imagination
