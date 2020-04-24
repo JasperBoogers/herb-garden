@@ -31,6 +31,7 @@ https://www.makerguides.com/drv8825-stepper-motor-driver-arduino-tutorial/
 * [ ] water pump
 * [ ] water hoses
 * [ ] valves for left/right positioning
+* [ ] ultrasonic sensor
 
 ## Development history/plan
 In this section contains an overview of (future) versions. This includes possible fantasies.
