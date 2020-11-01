@@ -2,11 +2,7 @@
 
 
 // define pins
-#define MoisturePin1 1
-#define MoisturePin2 2
-#define MoisturePin3 3
-#define MoisturePin4 4
-#define MoisturePin5 5
+int MoisturePins[5] = {1, 2, 3, 4, 5};
 #define LDRPin 6
 #define MotorDirPin 7
 #define MotorStepPin 8
@@ -35,13 +31,14 @@ Plant plant3 = {2, "right", "munt", 88.4};
 Plant plant4 = {2, "left", "koriander", 150};
 Plant plant5 = {1, "right", "oregano", 99.0};
 
+// create array of pointers to plant structs
+Plant *plants[5] = {&plant1, &plant2, &plant3, &plant4, &plant5};
+
 void setup() {
   // put your setup code here, to run once:
-  pinMode(MoisturePin1, INPUT);
-  pinMode(MoisturePin2, INPUT);
-  pinMode(MoisturePin3, INPUT);
-  pinMode(MoisturePin4, INPUT);
-  pinMode(MoisturePin5, INPUT);
+  for (int i=0; i<5; i++) {
+    pinMode(MoisturePins[i], INPUT);
+  }
   pinMode(LDRPin, INPUT);
   pinMode(MotorDirPin, OUTPUT);
   pinMode(MotorStepPin, OUTPUT);
@@ -49,10 +46,10 @@ void setup() {
   pinMode(MotorBoundPinFar, INPUT);
   MinLocation = find_min_location();
   MaxLocation = find_max_location();
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   /*
    * loop over plants
    * for each plant, read sensor value and compare to threshold
@@ -60,6 +57,11 @@ void loop() {
    * once watered, do not move watering head, but continue checking
    * if all plants watered, move back to MinLocation 
    */
+   for (int i=0; i<5; i++) {
+    move_motor(plants[i]->location);
+    dispense_water(plants[i]->dir);
+    delay(500);
+   }
 }
 
 
@@ -76,6 +78,17 @@ float find_max_location(){
 void move_motor(float location){
   // move motor to location
   // use CurrentLocation to determine direction of motion
+}
+
+void dispense_water(char* d) {
+  // dispense water either left or right
+  if (strcmp(d, "left") == 0){ 
+    Serial.print("left");
+  }
+  else {
+    Serial.print("right");
+  }
+  
 }
 
 float check_water_level(){
