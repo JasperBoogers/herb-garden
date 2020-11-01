@@ -23,7 +23,7 @@ void setup() {
   Serial.begin(9600);
   
   // setup stepper
-  stepper.setMaxSpeed(1000);
+  stepper.setMaxSpeed(2000);
   find_home();
   end_location = find_end();
 
@@ -45,13 +45,13 @@ void loop() {
 }
 
 void find_home(void){
-  stepper.setSpeed(100);
   long pos = -1;
   Serial.println("Finding home...");
   
   while(digitalRead(homeStopPin))
   {
     stepper.moveTo(pos);
+    stepper.setSpeed(400);
     pos--;
     stepper.run();
     delay(5);
@@ -67,7 +67,6 @@ void find_home(void){
 }
 
 float find_end(void){
-  stepper.setSpeed(100);
   long pos = 1;
   Serial.println("Finding end...");
 
@@ -75,6 +74,7 @@ float find_end(void){
   while(digitalRead(endStopPin))
   {
     stepper.moveTo(pos);
+    stepper.setSpeed(400);
     pos++;
     stepper.run();
     delay(5);
