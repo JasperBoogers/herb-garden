@@ -41,6 +41,10 @@ test construction for watering system
 
 ### version 1.0
 first working version. Based on Arduino uno. Standalone, no wireless connection and/or control.
+no individual moisture sensor checking, just water 2-hourly or something like that.
+
+### version 1.5
+use moisture sensors to check for each plant
 
 ### version 2.0
 * setup using ESP8266, could be controlled by raspi
