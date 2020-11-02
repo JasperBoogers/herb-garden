@@ -19,17 +19,18 @@ float MaxLocation;
 // define plants
 struct Plant {
   public:
-  int location;
+  unsigned int location;
   char dir[6];
+  unsigned int moisturePin;
   char species[15];
-  float sensor_threshold;
+  float sensorThreshold;
   };
 
-Plant plant1 = {3, "right", "basilicum", 100.0};
-Plant plant2 = {3, "left", "tijm", 105.0};
-Plant plant3 = {2, "right", "munt", 88.4};
-Plant plant4 = {2, "left", "koriander", 150};
-Plant plant5 = {1, "right", "oregano", 99.0};
+Plant plant1 = {3, "right", 1, "basilicum", 100.0};
+Plant plant2 = {3, "left", 2, "tijm", 105.0};
+Plant plant3 = {2, "right", 3, "munt", 88.4};
+Plant plant4 = {2, "left", 4, "koriander", 150};
+Plant plant5 = {1, "right", 5, "oregano", 99.0};
 
 // create array of pointers to plant structs
 Plant *plants[5] = {&plant1, &plant2, &plant3, &plant4, &plant5};
@@ -62,10 +63,20 @@ void loop() {
    * if all plants watered, move back to MinLocation 
    */
    for (int i=0; i<5; i++) {
-    Serial.println("checking plant " + i);
-    move_motor(plants[i]->location);
-    dispense_water(plants[i]->dir);
-    delay(500);
+    Serial.print("checking plant ");
+    Serial.print(plants[i]->species);
+    Serial.print(" at location ");
+    Serial.println(plants[i]->location);
+
+    if ( abs(check_moisture_level(plants[i]->moisturePin)-plants[i]->sensorThreshold) > 0.1 ) {
+      Serial.println("plant needs water");
+      move_motor(plants[i]->location);
+      dispense_water(plants[i]->dir);
+    }
+    else {
+      Serial.println("plant does not need water");
+    }
+    delay(2000);
    }
 }
 
@@ -74,6 +85,7 @@ float find_min_location(){
 //  float Min:
 //  return Min;
   Serial.println("searching for min location...");
+  delay(2000);
   return 0.0;
 }
 
@@ -81,6 +93,7 @@ float find_max_location(){
 //  float Max;
 //  return Max;
   Serial.println("searching for max location...");
+  delay(2000);
   return 100.0;
 }
 
@@ -88,16 +101,24 @@ void move_motor(int location){
   // move motor to location
   // use CurrentLocation to determine direction of motion
   Serial.println("moving motor...");
+  delay(1000);
 }
 
 void dispense_water(char* d) {
   // dispense water either left or right
   if (strcmp(d, "left") == 0){ 
-    Serial.print("dispensing left");
+    Serial.println("dispensing left");
+    delay(1000);
   }
   else {
-    Serial.print("dispensing right");
+    Serial.println("dispensing right");
+    delay(1000);
   }
+}
+
+float check_moisture_level(int pin) {
+  // check the moisture level of given moisturePin
+  return (float)random(80, 160);
 }
 
 float check_water_level(){
