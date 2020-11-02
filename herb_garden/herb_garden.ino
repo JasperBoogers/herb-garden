@@ -2,7 +2,7 @@
 
 
 // define pins
-int MoisturePins[5] = {1, 2, 3, 4, 5};
+unsigned int MoisturePins[5] = {1, 2, 3, 4, 5};
 #define LDRPin 6
 #define MotorDirPin 7
 #define MotorStepPin 8
@@ -36,6 +36,10 @@ Plant plant5 = {1, "right", 5, "oregano", 99.0};
 Plant *plants[5] = {&plant1, &plant2, &plant3, &plant4, &plant5};
 
 void setup() {
+    Serial.begin(9600);
+  while (!Serial) {
+    // wait
+  }
   // put your setup code here, to run once:
   for (int i=0; i<5; i++) {
     pinMode(MoisturePins[i], INPUT);
@@ -47,11 +51,6 @@ void setup() {
   pinMode(MotorBoundPinFar, INPUT);
   MinLocation = find_min_location();
   MaxLocation = find_max_location();
-  
-  Serial.begin(9600);
-  while (!Serial) {
-    // wait
-  }
 }
 
 void loop() {
@@ -76,8 +75,12 @@ void loop() {
     else {
       Serial.println("plant does not need water");
     }
-    delay(2000);
+   delay(5000);
    }
+   // move motor back to MinLocation
+   Serial.println("Finished loop");
+   move_motor((int)ceil(MinLocation));
+   delay(2000);
 }
 
 
@@ -101,18 +104,15 @@ void move_motor(int location){
   // move motor to location
   // use CurrentLocation to determine direction of motion
   Serial.println("moving motor...");
-  delay(1000);
 }
 
 void dispense_water(char* d) {
   // dispense water either left or right
   if (strcmp(d, "left") == 0){ 
     Serial.println("dispensing left");
-    delay(1000);
   }
   else {
     Serial.println("dispensing right");
-    delay(1000);
   }
 }
 
