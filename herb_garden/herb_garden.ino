@@ -12,9 +12,9 @@ unsigned int MoisturePins[5] = {1, 2, 3, 4, 5};
 // define motor directions and locations
 #define FORWARD LOW
 #define BACKWARD HIGH
-float CurrentLocation;
-float MinLocation;
-float MaxLocation;
+float currentLocation;
+float minLocation;
+float maxLocation;
 
 // define plants
 struct Plant {
@@ -49,8 +49,8 @@ void setup() {
   pinMode(MotorStepPin, OUTPUT);
   pinMode(MotorBoundPinClose, INPUT);
   pinMode(MotorBoundPinFar, INPUT);
-  MinLocation = find_min_location();
-  MaxLocation = find_max_location();
+  minLocation = findEndStop(true);
+  maxLocation = findEndStop(false);
 }
 
 void loop() {
@@ -79,30 +79,33 @@ void loop() {
    }
    // move motor back to MinLocation
    Serial.println("Finished loop");
-   move_motor((int)ceil(MinLocation));
+   move_motor((int)ceil(minLocation));
    delay(2000);
 }
 
-
-float find_min_location(){
-//  float Min:
-//  return Min;
-  Serial.println("searching for min location...");
-  delay(2000);
-  return 0.0;
-}
-
-float find_max_location(){
-//  float Max;
-//  return Max;
-  Serial.println("searching for max location...");
-  delay(2000);
-  return 100.0;
+float findEndStop(bool near) {
+  /* find the end-stops
+   * if near is true --> home end-stop, else far end-stop
+   * maybe add some margin to the location?
+   */
+  if (near) {
+    Serial.println("searching for min location...");
+    delay(2000);
+    return 0.0;
+  }
+  else {
+    Serial.println("searching for max location...");
+    delay(2000);
+    return 100.0;
+  }
 }
 
 void move_motor(int location){
-  // move motor to location
-  // use CurrentLocation to determine direction of motion
+  /* move motor to location
+   * use CurrentLocation to determine direction of motion
+   * scale location with difference between minLocation and maxLocation
+   * if zero --> go back to minLocation
+   */
   Serial.println("moving motor...");
 }
 
