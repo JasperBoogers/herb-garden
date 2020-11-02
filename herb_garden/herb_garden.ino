@@ -46,7 +46,11 @@ void setup() {
   pinMode(MotorBoundPinFar, INPUT);
   MinLocation = find_min_location();
   MaxLocation = find_max_location();
+  
   Serial.begin(9600);
+  while (!Serial) {
+    // wait
+  }
 }
 
 void loop() {
@@ -58,6 +62,7 @@ void loop() {
    * if all plants watered, move back to MinLocation 
    */
    for (int i=0; i<5; i++) {
+    Serial.println("checking plant " + i);
     move_motor(plants[i]->location);
     dispense_water(plants[i]->dir);
     delay(500);
@@ -68,27 +73,31 @@ void loop() {
 float find_min_location(){
 //  float Min:
 //  return Min;
+  Serial.println("searching for min location...");
+  return 0.0;
 }
 
 float find_max_location(){
 //  float Max;
 //  return Max;
+  Serial.println("searching for max location...");
+  return 100.0;
 }
 
-void move_motor(float location){
+void move_motor(int location){
   // move motor to location
   // use CurrentLocation to determine direction of motion
+  Serial.println("moving motor...");
 }
 
 void dispense_water(char* d) {
   // dispense water either left or right
   if (strcmp(d, "left") == 0){ 
-    Serial.print("left");
+    Serial.print("dispensing left");
   }
   else {
-    Serial.print("right");
+    Serial.print("dispensing right");
   }
-  
 }
 
 float check_water_level(){
